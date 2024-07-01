@@ -1,0 +1,28 @@
+{
+    "categories":[
+        {       "id":1,
+            "value":40,
+            "heading":"Laptops"
+        },
+        {   "id":2,
+            "value":50,
+            "heading":"Mobiles"
+        },
+        {   "id":3,
+            "value":60,
+            "heading":"Monitors"
+        },
+        {   "id":4,
+            "value":30,
+            "heading":"Watches"
+        },
+        {   "id":5,
+            "value":20,
+            "heading":"IPAD"
+        },
+        {   "id":6,
+            "value":10,
+            "heading":"Cameras"
+        }
+    ]
+}
