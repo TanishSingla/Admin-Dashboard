@@ -3,10 +3,14 @@ import { RiDashboardFill, RiShoppingBag3Fill, RiCoupon3Fill } from "react-icons/
 import { AiFillFileText } from "react-icons/ai"
 import { IoIosPeople } from "react-icons/io"
 import { FaChartBar, FaChartPie, FaChartLine } from "react-icons/fa6"
+import { useState } from "react"
+import { HiMenuAlt4 } from "react-icons/hi"
 
 const AdminSidebar = () => {
 
     const location = useLocation();
+    const [shoeModal, setShowModal] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1100);
 
     const ActiveLink = (currUrl: string): string => {
         if (location.pathname.includes(`/admin/${currUrl}`)) {
@@ -15,83 +19,91 @@ const AdminSidebar = () => {
         return "white"
     }
     return (
-        <aside>
-            <h2>Logo.</h2>
-            <div>
-                <h5>
-                    Dashboard
-                </h5>
+        <>
 
-                <ul>
-                    <li style={{ backgroundColor: ActiveLink('dashboard') }}>
-                        <Link to={'/admin/dashboard'}>
-                            <RiDashboardFill />
-                            Dashboard
-                        </Link>
-                    </li>
-                    <li style={{ backgroundColor: ActiveLink('product') }}>
-                        <Link to={'/admin/product'}>
-                            <RiShoppingBag3Fill />
-                            Products
-                        </Link>
-                    </li>
-                    <li style={{ backgroundColor: ActiveLink('customer') }}>
-                        <Link to={'/admin/customer'}>
-                            <IoIosPeople />
-                            Customer
-                        </Link>
-                    </li>
-                    <li style={{ backgroundColor: ActiveLink('transaction') }}>
-                        <Link to={'/admin/transaction'}>
-                            <AiFillFileText />
-                            Transaction
-                        </Link>
-                    </li>
-                </ul>
-            </div>
+            {isMobile && (
+                <button id="hamburger" onClick={() => setShowModal(true)}>
+                    <HiMenuAlt4 />
+                </button >
+            )}
+            <aside>
+                <h2>Logo.</h2>
+                <div>
+                    <h5>
+                        Dashboard
+                    </h5>
 
-            {/* Charts */}
-            <div>
-                <h5>
-                    Charts
-                </h5>
+                    <ul>
+                        <li style={{ backgroundColor: ActiveLink('dashboard') }}>
+                            <Link to={'/admin/dashboard'}>
+                                <RiDashboardFill />
+                                Dashboard
+                            </Link>
+                        </li>
+                        <li style={{ backgroundColor: ActiveLink('product') }}>
+                            <Link to={'/admin/product'}>
+                                <RiShoppingBag3Fill />
+                                Products
+                            </Link>
+                        </li>
+                        <li style={{ backgroundColor: ActiveLink('customer') }}>
+                            <Link to={'/admin/customer'}>
+                                <IoIosPeople />
+                                Customer
+                            </Link>
+                        </li>
+                        <li style={{ backgroundColor: ActiveLink('transaction') }}>
+                            <Link to={'/admin/transaction'}>
+                                <AiFillFileText />
+                                Transaction
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
 
-                <ul>
-                    <li style={{ backgroundColor: ActiveLink('/chart/bar') }}>
-                        <Link to={'/admin/chart/bar'}>
-                            <FaChartBar />
-                            Bar-Chart
-                        </Link>
-                    </li>
-                    <li style={{ backgroundColor: ActiveLink('/chart/pie') }}>
-                        <Link to={'/admin/chart/pie'}>
-                            < FaChartPie />
-                            Pie-Chart
-                        </Link>
-                    </li>
-                    <li style={{ backgroundColor: ActiveLink('/chart/line') }}>
-                        <Link to={'/admin/chart/line'}>
-                            <FaChartLine />
-                            Line-Chart
-                        </Link>
-                    </li>
-                </ul>
-            </div>
+                {/* Charts */}
+                <div>
+                    <h5>
+                        Charts
+                    </h5>
+
+                    <ul>
+                        <li style={{ backgroundColor: ActiveLink('/chart/bar') }}>
+                            <Link to={'/admin/chart/bar'}>
+                                <FaChartBar />
+                                Bar-Chart
+                            </Link>
+                        </li>
+                        <li style={{ backgroundColor: ActiveLink('/chart/pie') }}>
+                            <Link to={'/admin/chart/pie'}>
+                                < FaChartPie />
+                                Pie-Chart
+                            </Link>
+                        </li>
+                        <li style={{ backgroundColor: ActiveLink('/chart/line') }}>
+                            <Link to={'/admin/chart/line'}>
+                                <FaChartLine />
+                                Line-Chart
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
 
 
-            {/* Coupon */}
-            <div>
-                <h5>Coupon</h5>
-                <ul>
-                    <li style={{ backgroundColor: ActiveLink('coupon') }}>
-                        <Link to={'/admin/coupon'}>
-                            <RiCoupon3Fill />
-                            Generate Coupon
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-        </aside>
+                {/* Coupon */}
+                <div>
+                    <h5>Coupon</h5>
+                    <ul>
+                        <li style={{ backgroundColor: ActiveLink('coupon') }}>
+                            <Link to={'/admin/apps/coupon'}>
+                                <RiCoupon3Fill />
+                                Generate Coupon
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </>
     )
 }
 

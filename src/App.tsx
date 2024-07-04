@@ -12,12 +12,15 @@ const TransactionManagement = lazy(() => import("./pages/management/TransactionM
 const BarCharts = lazy(() => import("./pages/charts/BarCharts"))
 const PieCharts = lazy(() => import("./pages/charts/PieCharts"))
 const LineCharts = lazy(() => import("./pages/charts/LineCharts"))
+const Coupons = lazy(() => import("./pages/apps/Coupons"))
 
 const App = () => {
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
         <Routes>
+
+          {/* Pages */}
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/customer" element={<Customer />} />
           <Route path="/admin/product" element={<Products />} />
@@ -28,10 +31,14 @@ const App = () => {
           <Route path="/admin/product/:id" element={<ProductManagement />} />
           <Route path="/admin/transaction/:id" element={<TransactionManagement />} />
 
+
           {/* Charts */}
           <Route path="/admin/chart/bar" element={<BarCharts />} />
           <Route path="/admin/chart/pie" element={<PieCharts />} />
           <Route path="/admin/chart/line" element={<LineCharts />} />
+
+          {/* Apps (Coupon) */}
+          <Route path="/admin/apps/coupon" element={<Coupons />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

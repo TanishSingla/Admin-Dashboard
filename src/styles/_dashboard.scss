@@ -1,7 +1,7 @@
 .dashboard{
     overflow-y: auto;
 
-    >.input-bar{
+    .input-bar{
         height: 4rem;
         @include flex(row,unset);
         padding:0 1rem;
