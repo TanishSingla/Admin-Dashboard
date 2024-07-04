@@ -130,4 +130,43 @@
             }
         }
     }
+
+    .transaction-container{
+        display: flex;
+        gap: 2rem;
+        padding: 0 2rem 2rem 0;
+        height: 30rem;
+
+        >div{
+            background-color: #fff;
+            box-shadow: 0px 10px 10px rgba(0,0,0,0.132);
+            border-radius: 10px;
+        }
+        .gender-chart{
+            width: 100%;
+            max-width: 20rem;
+            padding: 1rem;
+            position: relative;
+
+            >h2{
+                text-align: center;
+                margin: 1.5rem 0 2rem 0;
+                @include heading;
+            }
+            >p{
+                @include posCenter;
+                font-size: 2rem;
+                color: rgba(0,0,0,0.634);
+            }
+        }
+        .transaction-box{
+            width: 100%;
+            padding: 1rem;
+            overflow-x: auto;
+            >h2{
+                margin: 1.5rem 0 0 0;
+                @include heading
+            }
+        }
+    }
 }
