@@ -58,7 +58,7 @@ const AdminSidebar = () => {
 
                     <ul>
                         <li style={{ backgroundColor: ActiveLink('dashboard') }}>
-                            <Link to={'/admin/dashboard'}>
+                            <Link to={'/'}>
                                 <RiDashboardFill />
                                 Dashboard
                             </Link>
