@@ -81,7 +81,6 @@ const Dashboard = () => {
                             {/* <CategoryItem heading="Laptops" value={70} color="hsl(169,100%,50%" /> */}
 
                             {data.categories.map((i) => (<CategoryItem
-                                key={i.id}
                                 heading={i.heading}
                                 value={i.value}
                                 color={`hsl(${i.value * 10},${i.value}%,50%`} />))}
