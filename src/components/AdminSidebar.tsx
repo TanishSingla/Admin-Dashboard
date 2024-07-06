@@ -3,13 +3,13 @@ import { RiDashboardFill, RiShoppingBag3Fill, RiCoupon3Fill } from "react-icons/
 import { AiFillFileText } from "react-icons/ai"
 import { IoIosPeople } from "react-icons/io"
 import { FaChartBar, FaChartPie, FaChartLine } from "react-icons/fa6"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { HiMenuAlt4 } from "react-icons/hi"
 
 const AdminSidebar = () => {
 
     const location = useLocation();
-    const [shoeModal, setShowModal] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
     const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1100);
 
     const ActiveLink = (currUrl: string): string => {
@@ -18,6 +18,17 @@ const AdminSidebar = () => {
         }
         return "white"
     }
+
+    const resizeHandler = () => {
+        setIsMobile(window.innerWidth < 1100);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", resizeHandler);
+        return () => {
+            window.removeEventListener("resize", resizeHandler);
+        }
+    }, [])
     return (
         <>
 
@@ -26,7 +37,19 @@ const AdminSidebar = () => {
                     <HiMenuAlt4 />
                 </button >
             )}
-            <aside>
+            <aside style={
+                isMobile ?
+                    {
+                        width: "13rem",
+                        height: "100vh",
+                        position: "fixed",
+                        top: "0",
+                        left: showModal ? "0rem" : "-20rem",
+                        transition: "all 0.9s"
+                    }
+                    :
+                    {}
+            }>
                 <h2>Logo.</h2>
                 <div>
                     <h5>
@@ -101,8 +124,11 @@ const AdminSidebar = () => {
                             </Link>
                         </li>
                     </ul>
+                    {
+                        isMobile && (<button id="close-sidebar" onClick={() => setShowModal(false)}>Close</button>)
+                    }
                 </div>
-            </aside>
+            </aside >
         </>
     )
 }
